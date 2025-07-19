@@ -11,7 +11,6 @@ mkdir "$OUT"
 SCRIPT_NAME='tar2tape.pl'
 TAPE_NAME='211bsd-195.tap'
 
-
 tar xvf "$TARBALL" -C "$OUT"
 zips=('root.dmp.gz' 'src.tar.gz' 'usr.tar.gz' 'sys.tar.gz')
 

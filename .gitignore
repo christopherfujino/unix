@@ -1,11 +1,1 @@
-2.11BSD-pl195.tar
-out/
-
-# generated boot tape
-211bsd-195.tap
-# ?!
-src.tap
-
-# initialized disk image
-211bsd-195.rd54
-extra-data.rd54
+ignore/
