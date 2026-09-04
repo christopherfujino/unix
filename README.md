@@ -107,6 +107,46 @@ HALT instruction, PC: 000014 (MOV #1,13710)
 sim> quit
 ```
 
-Create user by manually editing `/etc/passwd`:
+## Create a User
 
 https://www.retrocmp.com/how-tos/installing-211bsd-unix-on-pdp-1144/124-installing-211bsd-configuring-terminals-and-users
+
+1) add a line like this into “/etc/master.passwd”:
+
+joerg::101:40::::A regular user:/usr/joerg:/bin/sh
+Then execute
+
+# cp master.passwd passwd
+# mkpasswd /etc/passwd 
+(so passwd.dir and passwd.pag are generated)
+
+Check the entries with
+
+# chpass joerg
+! This resets /etc/passwd to old style format!
+
+2) User home directory:
+
+chmod a+r /usr # (only first time, all user must be able to read their “..”)                 
+mkdir /usr/joerg
+chgrp staff /usr/joerg
+chown joerg  /usr/joerg
+3) Execute
+
+```sh
+# chpass joerg
+```
+
+and clear out the “Password:” entry. The user has now empty password, can login and can change its password by executing “$ passwd”
+
+Accounts without password can not be accessed by ftp!
+
+## Set sane TTY behavior
+
+https://retrocomputing.stackexchange.com/questions/13088/using-only-one-terminal-can-i-interrupt-a-process-thats-hung-on-very-early-uni
+
+> In 2.11BSD, I think the kernel defaults are still the same as in v6 (at least, using the old terminal driver), but the command "stty dec" will switch to the more common intr=^C, erase=^? and kill=^U all in a single step. I would have to set up a 2.11BSD system and test this to be sure.
+
+```sh
+stty dec
+```

@@ -7,4 +7,4 @@ RUN_CONFIG="${ROOT}/2.11bsd-195.ini"
 
 cd "$ROOT"
 
-pdp11 "$RUN_CONFIG"
+exec pdp11 "$RUN_CONFIG"
