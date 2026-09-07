@@ -117,7 +117,7 @@ joerg::101:40::::A regular user:/usr/joerg:/bin/sh
 Then execute
 
 # cp master.passwd passwd
-# mkpasswd /etc/passwd 
+# mkpasswd /etc/passwd
 (so passwd.dir and passwd.pag are generated)
 
 Check the entries with
